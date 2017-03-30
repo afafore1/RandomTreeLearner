@@ -16,6 +16,8 @@ import java.util.stream.Stream;
 public class Agent
 {
     ArrayList<String[]> data = new ArrayList<>();
+    private int sameSplitCount = 0;
+
 
     void readInFile(File dataFile)
     {
@@ -74,16 +76,36 @@ public class Agent
         String [] randData2 = data.get(dataToUse.get(randomRow2));
         double splitValue = (Double.parseDouble(randData1[feature]) + Double.parseDouble(randData2[feature])) / 2;
         Node node = new Node(splitValue);
-        node.setFeature(feature);
-        rtLearner.insert(node, splitValue, feature, isLeftChild);
-        if(!node.isLeaf() || rtLearner.getRoot() == node)
+        if(dataToUse.size() <= 2)
         {
-            dataToUse = getNextDataToUse(dataToUse, splitValue, feature, true); // for left
-            createTree(rtLearner, dataToUse, true);
+            int dataLen = randData1.length -1;
+            double answer = (Double.parseDouble(randData1[dataLen]) + Double.parseDouble(randData2[dataLen])) / 2;
+            node.setAsLeaf(answer);
+        }else
+        {
+            node.setFeature(feature);
         }
-        dataToUse = getNextDataToUse(dataToUse, splitValue, feature, false);
-        createTree(rtLearner, dataToUse, false);
+        rtLearner.insert(node, isLeftChild);
+        ArrayList<Integer> leftDataToUse = getNextDataToUse(dataToUse, splitValue, feature, true); // for left
+        if(node.isLeaf())
+        {
+           return;
+        }
+        createTree(rtLearner, leftDataToUse, true);
+        ArrayList<Integer> rightDataToUse = getNextDataToUse(dataToUse, splitValue, feature, false); // for right
+        createTree(rtLearner, rightDataToUse, false);
+
+        //createTree(rtLearner, rightDataToUse, false);
         System.out.println("\nFeature selected: "+feature+"\nRandom col 1: "+randomRow1+"\nRandom col 2: "+randomRow2);
+    }
+
+    double getResult(String [] queryData, RandomTreeLearner rtLearner)
+    {
+        Node root = rtLearner.getRoot();
+        int feature = root.getFeature();
+        double splitValue = Double.parseDouble(queryData[feature]);
+        Node node = new Node(splitValue);
+        return rtLearner.getAnswer(node);
     }
 
     public static void main(String [] args)
@@ -100,6 +122,13 @@ public class Agent
             initialDataToUse.add(i);
         }
         agent.createTree(rtLearner, initialDataToUse, false);
+        // get answer
+        for(int x = trainData; x < agent.data.size(); x++)
+        {
+            String [] queryData = agent.data.get(x);
+            System.out.println(agent.getResult(queryData, rtLearner));
+        }
+
         for(String [] d : agent.data)
         {
             System.out.println(Arrays.toString(d));

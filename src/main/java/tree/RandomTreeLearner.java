@@ -6,29 +6,30 @@ package tree;
 public class RandomTreeLearner
 {
     private Node root = null;
+    private Node currentNode = null;
 
     public Node getRoot()
     {
         return this.root;
     }
 
-    public void insert(Node node, double splitValue, int feature, boolean isLeftChild)
+    public void insert(Node node, boolean isLeftChild)
     {
         if(root == null)
         {
-            root = new Node(splitValue);
-            root.setFeature(feature);
+            root = node;
+            currentNode = root;
             return;
         }
-        Node child = new Node(splitValue);
-        child.setFeature(feature);
         if(isLeftChild)
         {
-            node.setLeftChild(child);
-            child.setParent(node);
-            return;
+            currentNode.setLeftChild(node);
+        }else
+        {
+            currentNode.setRightChild(node);
         }
-        node.setRightChild(child);
+        node.setParent(currentNode);
+        currentNode = node;
 //        if(value >= node.getValue())
 //        {
 //            if(node.getRightChild() == null)
@@ -48,10 +49,9 @@ public class RandomTreeLearner
 //                insert(node.getLeftChild(), value);
 //            }
 //        }
-        child.setParent(node);
     }
 
-    double getAnswer(Node node)
+    public double getAnswer(Node node)
     {
         return getAnswer(root, node);
     }

@@ -20,7 +20,7 @@ public class Node
         leftChild = null;
     }
 
-    int getFeature()
+    public int getFeature()
     {
         return feature;
     }
@@ -62,8 +62,9 @@ public class Node
         this.feature = feature;
     }
 
-    public void setAsLeaf()
+    public void setAsLeaf(double answer)
     {
+        this.split_value = answer;
         isLeaf = true;
     }
 
