@@ -66,7 +66,7 @@ public class Agent
         return nextDataToUse;
     }
 
-    void createTree(RandomTreeLearner rtLearner, ArrayList<Integer> dataToUse, boolean isLeftChild)
+    void createTree(RandomTreeLearner rtLearner, Node currentNode, ArrayList<Integer> dataToUse, boolean isLeftChild)
     {
         int colSize = data.get(0).length;
         int randomRow1 = getRandom(dataToUse.size()); // random row to use
@@ -78,25 +78,23 @@ public class Agent
         Node node = new Node(splitValue);
         if(dataToUse.size() <= 2)
         {
-            int dataLen = randData1.length -1;
+            int dataLen = randData1.length - 1;
             double answer = (Double.parseDouble(randData1[dataLen]) + Double.parseDouble(randData2[dataLen])) / 2;
             node.setAsLeaf(answer);
-        }else
-        {
-            node.setFeature(feature);
+            rtLearner.insert(currentNode, node, isLeftChild);
+            return;
         }
-        rtLearner.insert(node, isLeftChild);
+        node.setFeature(feature);
+        rtLearner.insert(currentNode, node, isLeftChild);
         ArrayList<Integer> leftDataToUse = getNextDataToUse(dataToUse, splitValue, feature, true); // for left
-        if(node.isLeaf())
-        {
-           return;
-        }
-        createTree(rtLearner, leftDataToUse, true);
+        //if(leftDataToUse.isEmpty()) return;
+        createTree(rtLearner, node, leftDataToUse, true);
         ArrayList<Integer> rightDataToUse = getNextDataToUse(dataToUse, splitValue, feature, false); // for right
-        createTree(rtLearner, rightDataToUse, false);
+        //if(rightDataToUse.isEmpty()) return;
+        createTree(rtLearner, node, rightDataToUse, false);
 
         //createTree(rtLearner, rightDataToUse, false);
-        System.out.println("\nFeature selected: "+feature+"\nRandom col 1: "+randomRow1+"\nRandom col 2: "+randomRow2);
+        //System.out.println("\nFeature selected: "+feature+"\nRandom col 1: "+randomRow1+"\nRandom col 2: "+randomRow2);
     }
 
     double getResult(String [] queryData, RandomTreeLearner rtLearner)
@@ -108,11 +106,19 @@ public class Agent
         return rtLearner.getAnswer(node);
     }
 
+    void printData(ArrayList<Integer> dataPoints)
+    {
+        for(Integer i : dataPoints)
+        {
+            System.out.println(Arrays.toString(data.get(i)));
+        }
+    }
+
     public static void main(String [] args)
     {
         Agent agent = new Agent();
         RandomTreeLearner rtLearner = new RandomTreeLearner();
-        File dataFile = Parser.getDataFile("simple.csv");
+        File dataFile = Parser.getDataFile("ripple.csv");
         agent.readInFile(dataFile);
         ArrayList<Integer> initialDataToUse = new ArrayList<>();
         int trainData = agent.data.size() * 70;
@@ -121,14 +127,22 @@ public class Agent
         {
             initialDataToUse.add(i);
         }
-        agent.createTree(rtLearner, initialDataToUse, false);
+        agent.createTree(rtLearner, null, initialDataToUse, false);
+        System.out.println("Training Data");
+        agent.printData(initialDataToUse);
+        System.out.println("Answers");
+        ArrayList<Integer> queryDataPoints = new ArrayList<>();
         // get answer
         for(int x = trainData; x < agent.data.size(); x++)
         {
             String [] queryData = agent.data.get(x);
             System.out.println(agent.getResult(queryData, rtLearner));
+            queryDataPoints.add(x);
         }
 
+        System.out.println("Query Data");
+        agent.printData(queryDataPoints);
+        System.out.println("Actual Data");
         for(String [] d : agent.data)
         {
             System.out.println(Arrays.toString(d));

@@ -6,19 +6,17 @@ package tree;
 public class RandomTreeLearner
 {
     private Node root = null;
-    private Node currentNode = null;
 
     public Node getRoot()
     {
         return this.root;
     }
 
-    public void insert(Node node, boolean isLeftChild)
+    public void insert(Node currentNode, Node node, boolean isLeftChild)
     {
-        if(root == null)
+        if(currentNode == null)
         {
             root = node;
-            currentNode = root;
             return;
         }
         if(isLeftChild)
@@ -29,7 +27,6 @@ public class RandomTreeLearner
             currentNode.setRightChild(node);
         }
         node.setParent(currentNode);
-        currentNode = node;
 //        if(value >= node.getValue())
 //        {
 //            if(node.getRightChild() == null)
@@ -58,6 +55,10 @@ public class RandomTreeLearner
 
     double getAnswer(Node node, Node queryNode)
     {
+        if(node == null)
+        {
+            System.out.println();
+        }
         if(!node.isLeaf())
         {
             if(queryNode.getSplit_value() <= node.getSplit_value())
