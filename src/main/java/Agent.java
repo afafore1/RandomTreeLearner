@@ -4,6 +4,7 @@ import tree.RandomTreeLearner;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -65,15 +66,39 @@ public class Agent
         }
         return nextDataToUse;
     }
+    /*
+    The random data being picked should be unique,
+     */
+    ArrayList<String[]> getRandomData(ArrayList<Integer> dataToUse)
+    {
+        ArrayList<String[]> randomData = new ArrayList<>();
+        int randomRow1 = getRandom(dataToUse.size()); // random row to use
+        int randomRow2 = getRandom(dataToUse.size());
+        int numberOfTries = 0; // allow up to three
+        while(randomRow1 == randomRow2 && numberOfTries < 3)
+        {
+            randomRow1 = getRandom(dataToUse.size());
+            randomRow2 = getRandom(dataToUse.size());
+            numberOfTries++;
+        }
+        String [] randData1 = data.get(dataToUse.get(randomRow1));
+        String [] randData2 = data.get(dataToUse.get(randomRow2));
+        randomData.add(randData1);
+        randomData.add(randData2);
+        return  randomData;
+    }
 
     void createTree(RandomTreeLearner rtLearner, Node currentNode, ArrayList<Integer> dataToUse, boolean isLeftChild)
     {
         int colSize = data.get(0).length;
-        int randomRow1 = getRandom(dataToUse.size()); // random row to use
-        int randomRow2 = getRandom(dataToUse.size());
         int feature = getRandom(colSize-1); // random feature to be used
-        String [] randData1 = data.get(dataToUse.get(randomRow1));
-        String [] randData2 = data.get(dataToUse.get(randomRow2));
+        if(dataToUse.size() == 0)
+        {
+            return;
+        }
+        ArrayList<String[]> randomData = getRandomData(dataToUse);
+        String [] randData1 = randomData.get(0);
+        String [] randData2 = randomData.get(1);
         double splitValue = (Double.parseDouble(randData1[feature]) + Double.parseDouble(randData2[feature])) / 2;
         Node node = new Node(splitValue);
         if(dataToUse.size() <= 2)
@@ -114,14 +139,27 @@ public class Agent
         }
     }
 
+    double grade(RandomTreeLearner rtLearner, ArrayList<Integer> queryDataPoints)
+    {
+        double grade = 0;
+        for(int x : queryDataPoints)
+        {
+            String [] queryData = data.get(x);
+            double answer = Double.parseDouble(queryData[queryData.length - 1]);
+            double predictedAnswer = getResult(queryData, rtLearner);
+            if(answer == predictedAnswer) grade++;
+        }
+        return grade/queryDataPoints.size();
+    }
+
     public static void main(String [] args)
     {
         Agent agent = new Agent();
         RandomTreeLearner rtLearner = new RandomTreeLearner();
-        File dataFile = Parser.getDataFile("ripple.csv");
+        File dataFile = Parser.getDataFile("3_groups.csv");
         agent.readInFile(dataFile);
         ArrayList<Integer> initialDataToUse = new ArrayList<>();
-        int trainData = agent.data.size() * 70;
+        int trainData = agent.data.size() * 90;
         trainData /= 100; // train with 70% of data
         for(int i = 0; i < trainData; i++)
         {
@@ -147,5 +185,7 @@ public class Agent
         {
             System.out.println(Arrays.toString(d));
         }
+
+        System.out.println("Final grade is "+agent.grade(rtLearner, queryDataPoints));
     }
 }
