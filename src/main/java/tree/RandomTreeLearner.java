@@ -17,14 +17,21 @@ public class RandomTreeLearner
         if(currentNode == null)
         {
             root = node;
+            System.out.println("Root has "+node.getSplit_value()+" with feature "+node.getFeature());
             return;
         }
         if(isLeftChild)
         {
             currentNode.setLeftChild(node);
+            System.out.println("Left Child of "+currentNode.getSplit_value()+" "+" has "+node.getSplit_value()+" with feature "+node.getFeature());
         }else
         {
             currentNode.setRightChild(node);
+            System.out.println("Right Child of "+currentNode.getSplit_value()+" "+" has "+node.getSplit_value()+" with feature "+node.getFeature());
+        }
+        if(node.isLeaf())
+        {
+            System.out.println("Leaf has answer "+node.getSplit_value());
         }
         node.setParent(currentNode);
 //        if(value >= node.getValue())
@@ -48,27 +55,55 @@ public class RandomTreeLearner
 //        }
     }
 
-    public double getAnswer(Node node)
+    public double getAnswer(String [] queryData)
     {
-        return getAnswer(root, node);
+        try {
+            return getAnswer(root, queryData);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return Double.MIN_VALUE;
     }
 
-    double getAnswer(Node node, Node queryNode)
-    {
-        if(node == null)
-        {
-            System.out.println();
-        }
+    double getAnswer(Node node, String [] queryData) throws Exception {
+        int feature = node.getFeature();
+        double splitValue = Double.parseDouble(queryData[feature]);
+        Node queryNode = new Node(splitValue);
         if(!node.isLeaf())
         {
             if(queryNode.getSplit_value() <= node.getSplit_value())
             {
-                return getAnswer(node.getLeftChild(), queryNode);
+                if(node.getLeftChild() != null) // this should not happen
+                {
+                    return getAnswer(node.getLeftChild(), queryData);
+                }
             }
-            return getAnswer(node.getRightChild(), queryNode);
+            if(node.getRightChild() != null)
+            {
+                return getAnswer(node.getRightChild(), queryData);
+            }
         }
         return node.getSplit_value();
     }
+
+//    double getAnswer(Node node, Node queryNode)
+//    {
+//        if(node == null)
+//        {
+//            System.out.println();
+//        }
+//        if(!node.isLeaf())
+//        {
+//            if(queryNode.getSplit_value() <= node.getSplit_value())
+//            {
+//                int leftFeature = node.getLeftChild().getFeature();
+//
+//                return getAnswer(node.getLeftChild(), queryNode);
+//            }
+//            return getAnswer(node.getRightChild(), queryNode);
+//        }
+//        return node.getSplit_value();
+//    }
 
 //    Tree.Node find(int value)
 //    {
