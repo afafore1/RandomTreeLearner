@@ -2,7 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="29383ade-12b7-419c-a5ab-e63395d0a77d" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/Agent.class" afterPath="$PROJECT_DIR$/target/classes/Agent.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/Node.class" afterPath="$PROJECT_DIR$/target/classes/tree/Node.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/tree/RandomTreeLearner.class" afterPath="$PROJECT_DIR$/target/classes/tree/RandomTreeLearner.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/Agent.java" afterPath="$PROJECT_DIR$/src/main/java/Agent.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tree/Node.java" afterPath="$PROJECT_DIR$/src/main/java/tree/Node.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/tree/RandomTreeLearner.java" afterPath="$PROJECT_DIR$/src/main/java/tree/RandomTreeLearner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/data/simple.csv" afterPath="$PROJECT_DIR$/src/main/resources/data/simple.csv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/data/simple.csv" afterPath="$PROJECT_DIR$/target/classes/data/simple.csv" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -13,38 +21,45 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/RTLearner$Agent.coverage" NAME="Agent Coverage Results" MODIFIED="1491079500084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+  </component>
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RandomTreeLearner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/tree/RandomTreeLearner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="93">
-              <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+            <state relative-caret-position="-1252">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="simple.csv" pinned="false" current-in-tab="false">
+      <file leaf-file-name="simple.csv" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/resources/data/simple.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+            <state relative-caret-position="221">
+              <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Agent.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/Agent.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="202">
+              <caret line="211" column="50" lean-forward="false" selection-start-line="211" selection-start-column="50" selection-end-line="211" selection-end-column="50" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#5239#5240#0" expanded="true" />
+                <element signature="e#5292#5293#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -54,6 +69,26 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="winequality-red.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/data/winequality-red.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/tree/Node.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-170">
+              <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -69,47 +104,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Agent.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Agent.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-6">
-              <caret line="147" column="77" lean-forward="false" selection-start-line="147" selection-start-column="77" selection-end-line="147" selection-end-column="77" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Parser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/helper/Parser.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="35" column="20" lean-forward="false" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="3_groups.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/data/3_groups.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="175">
+              <caret line="179" column="32" lean-forward="false" selection-start-line="179" selection-start-column="16" selection-end-line="179" selection-end-column="32" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Node.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/tree/Node.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="18" />
-              <folding>
-                <element signature="e#515#516#0" expanded="true" />
-                <element signature="e#548#549#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -126,6 +126,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>,</find>
+      <find>-0.0112621296211</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -150,6 +151,7 @@
         <option value="$PROJECT_DIR$/src/main/java/helper/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/resources/data/simple.csv" />
         <option value="$PROJECT_DIR$/src/main/java/tree/Node.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/data/3_groups.csv" />
         <option value="$PROJECT_DIR$/src/main/java/tree/RandomTreeLearner.java" />
         <option value="$PROJECT_DIR$/src/main/java/Agent.java" />
       </list>
@@ -189,9 +191,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -266,8 +267,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RTLearner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="RTLearner" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tree" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -785,12 +813,14 @@
       <workItem from="1490849216916" duration="53000" />
       <workItem from="1490849435657" duration="7002000" />
       <workItem from="1490856495118" duration="7152000" />
-      <workItem from="1490912115225" duration="9207000" />
+      <workItem from="1490912115225" duration="13269000" />
+      <workItem from="1491002839780" duration="15000" />
+      <workItem from="1491027315998" duration="9506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="27439000" />
+    <option name="totallyTimeSpent" value="41022000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="136" width="1936" height="1056" extended-state="6" />
@@ -806,19 +836,20 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.47568712" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5528541" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12447917" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15208334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46828753" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46723044" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -837,19 +868,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/tree/RandomTreeLearner.java</url>
-          <line>59</line>
-          <properties />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Agent.java</url>
-          <line>96</line>
+          <line>73</line>
           <properties />
-          <option name="timeStamp" value="23" />
+          <option name="timeStamp" value="29" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="24" />
+      <option name="time" value="35" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -858,6 +883,150 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/Istanbul.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Agent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5239#5240#0" expanded="true" />
+            <element signature="e#5292#5293#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_92/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="154" column="31" lean-forward="false" selection-start-line="154" selection-start-column="31" selection-end-line="154" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_92/src.zip!/java/lang/Double.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8636">
+          <caret line="537" column="0" lean-forward="false" selection-start-line="537" selection-start-column="0" selection-end-line="537" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/winequality-white.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/3_groups.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tree/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tree/RandomTreeLearner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="935">
+          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/simple.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/ripple.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/Istanbul.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Agent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#5239#5240#0" expanded="true" />
+            <element signature="e#5292#5293#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_92/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2618">
+          <caret line="154" column="31" lean-forward="true" selection-start-line="154" selection-start-column="31" selection-end-line="154" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_92/src.zip!/java/lang/Double.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8636">
+          <caret line="537" column="0" lean-forward="false" selection-start-line="537" selection-start-column="0" selection-end-line="537" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/winequality-white.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/3_groups.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tree/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -880,6 +1049,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5239#5240#0" expanded="true" />
+            <element signature="e#5292#5293#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -904,10 +1075,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-          <folding>
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#548#549#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -933,6 +1101,8 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5239#5240#0" expanded="true" />
+            <element signature="e#5292#5293#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -957,10 +1127,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="680">
           <caret line="66" column="22" lean-forward="false" selection-start-line="66" selection-start-column="22" selection-end-line="66" selection-end-column="22" />
-          <folding>
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#548#549#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1031,37 +1198,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tree/Node.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="11" column="18" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="18" />
-          <folding>
-            <element signature="e#515#516#0" expanded="true" />
-            <element signature="e#548#549#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/tree/RandomTreeLearner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="93">
-          <caret line="61" column="0" lean-forward="false" selection-start-line="61" selection-start-column="0" selection-end-line="61" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/data/simple.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="13" column="11" lean-forward="true" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/data/ripple.csv">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/winequality-white.csv">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_92/src.zip!/java/lang/Double.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="8636">
+          <caret line="537" column="0" lean-forward="false" selection-start-line="537" selection-start-column="0" selection-end-line="537" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_92/jre/lib/rt.jar!/sun/misc/FloatingDecimal.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2380">
+          <caret line="154" column="31" lean-forward="false" selection-start-line="154" selection-start-column="31" selection-end-line="154" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tree/Node.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-170">
+          <caret line="11" column="30" lean-forward="false" selection-start-line="11" selection-start-column="19" selection-end-line="11" selection-end-column="30" />
           <folding />
         </state>
       </provider>
@@ -1076,6 +1240,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/data/3_groups.csv">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="179" column="32" lean-forward="false" selection-start-line="179" selection-start-column="16" selection-end-line="179" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/winequality-red.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/tree/RandomTreeLearner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1252">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/ripple.csv">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -1084,11 +1272,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Agent.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="147" column="77" lean-forward="false" selection-start-line="147" selection-start-column="77" selection-end-line="147" selection-end-column="77" />
+        <state relative-caret-position="202">
+          <caret line="211" column="50" lean-forward="false" selection-start-line="211" selection-start-column="50" selection-end-line="211" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#5239#5240#0" expanded="true" />
+            <element signature="e#5292#5293#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/data/simple.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

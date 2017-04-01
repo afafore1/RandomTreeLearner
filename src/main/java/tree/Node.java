@@ -12,6 +12,10 @@ public class Node
     private double split_value;
     private boolean isLeaf = false;
 
+    public Node()
+    {
+
+    }
     public Node(double splitValue)
     {
         this.split_value = splitValue;
@@ -25,12 +29,12 @@ public class Node
         return feature;
     }
 
-    Node getRightChild()
+    public Node getRightChild()
     {
         return rightChild;
     }
 
-    Node getLeftChild()
+    public Node getLeftChild()
     {
         return leftChild;
     }
