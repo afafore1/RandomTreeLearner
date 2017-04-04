@@ -190,11 +190,17 @@ public class Agent
     double grade(RandomTreeLearner rtLearner, ArrayList<Integer> queryDataPoints)
     {
         double grade = 0;
+        double sumOfAnswers = 0;
+        double sx = 0; double sy = 0; double sxx = 0; double syy = 0; double sxy = 0;
         for(int x : queryDataPoints)
         {
             String [] queryData = data.get(x);
             double answer = Double.parseDouble(queryData[queryData.length - 1]);
             double predictedAnswer = getResult(queryData, rtLearner);
+            sumOfAnswers += Math.pow((answer - predictedAnswer), 2);
+            sx+= answer; sy+= predictedAnswer; sxx += Math.pow(answer, 2); syy += Math.pow(predictedAnswer, 2);
+            sxy += answer * predictedAnswer;
+
             if(answer == predictedAnswer)
             {
                 grade++;
@@ -203,14 +209,24 @@ public class Agent
                 System.out.println("Answer off by "+Math.abs(answer - predictedAnswer));
             }
         }
-        return grade/queryDataPoints.size();
+        int dataLen = queryDataPoints.size();
+        double covariation = sxy / dataLen - sx * sy/ dataLen /dataLen;
+        // standard error of x
+        double sigmaX = Math.sqrt(sxx/dataLen - Math.pow(sx, 2) / dataLen/dataLen);
+        double sigmaY = Math.sqrt(syy/dataLen - Math.pow(sy, 2) / dataLen/dataLen);
+        double correlation = covariation/sigmaX/sigmaY;
+        sumOfAnswers /= queryDataPoints.size();
+        System.out.println("Exact grade answer is "+grade/queryDataPoints.size());
+        //System.out.println("Correlation is "+correlation);
+        sumOfAnswers = Math.sqrt(sumOfAnswers);
+        return correlation;
     }
 
     public static void main(String [] args)
     {
         Agent agent = new Agent();
         RandomTreeLearner rtLearner = new RandomTreeLearner();
-        File dataFile = Parser.getDataFile("concrete.csv");
+        File dataFile = Parser.getDataFile("Istanbul.csv");
         agent.readInFile(dataFile);
         ArrayList<Integer> initialDataToUse = new ArrayList<>();
         int trainData = agent.data.size() * 60;
@@ -231,16 +247,24 @@ public class Agent
             System.out.println(agent.getResult(queryData, rtLearner));
             queryDataPoints.add(x);
         }
+        System.out.println("Correlation for Out-Of-Sample is "+agent.grade(rtLearner, queryDataPoints));
 
-        System.out.println("Query Data");
+        System.out.println("Out of Sample Query Data");
         agent.printData(queryDataPoints);
-        System.out.println("Actual Data");
-        for(String [] d : agent.data)
-        {
-            System.out.println(Arrays.toString(d));
-        }
 
-        System.out.println("Final grade is "+agent.grade(rtLearner, queryDataPoints));
+        System.out.println("In Sample Query Data");
+        for(int x : initialDataToUse)
+        {
+            String [] inSampleData = agent.data.get(x);
+            System.out.println(agent.getResult(inSampleData, rtLearner));
+        }
+        System.out.println("Correlation for In-Sample data is "+agent.grade(rtLearner, initialDataToUse));
+
+//        System.out.println("Actual Data");
+//        for(String [] d : agent.data)
+//        {
+//            System.out.println(Arrays.toString(d));
+//        }
         //agent.printTree(rtLearner.getRoot());
     }
 }
