@@ -9,8 +9,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.stream.Stream;
 
 /**
@@ -94,58 +92,86 @@ public class Agent
     }
     /*
     The random data being picked should be unique,
+    Select two random rows (unique), if after three tries
+    the random rows are the same then this should be used
+    as a leaf node and answer can be selected from it.
      */
     ArrayList<String[]> getRandomData(ArrayList<Integer> dataToUse)
     {
         ArrayList<String[]> randomData = new ArrayList<>();
         int randomRow1 = getRandom(dataToUse.size()); // random row to use
         int randomRow2 = getRandom(dataToUse.size());
-        int numberOfTries = 0; // allow up to three
-        while(randomRow1 == randomRow2 && numberOfTries < 3)
+        int numberOfTries = 0;
+        String [] randData1 = data.get(dataToUse.get(randomRow1));
+        String [] randData2 = data.get(dataToUse.get(randomRow2));
+        // allow up to ten tries to get random data
+        while(Arrays.equals(randData1, randData2) && numberOfTries < 10)
         {
             randomRow1 = getRandom(dataToUse.size());
             randomRow2 = getRandom(dataToUse.size());
+            randData1 = data.get(dataToUse.get(randomRow1));
+            randData2 = data.get(dataToUse.get(randomRow2));
             numberOfTries++;
         }
-        String [] randData1 = data.get(dataToUse.get(randomRow1));
-        String [] randData2 = data.get(dataToUse.get(randomRow2));
         randomData.add(randData1);
         randomData.add(randData2);
         return  randomData;
     }
 
+    double getMeanValue(ArrayList<Integer> dataToUse)
+    {
+        double mean = 0.0;
+        for(int i : dataToUse)
+        {
+            String [] currentData =  data.get(i);
+            mean += Double.parseDouble(currentData[currentData.length - 1]);
+        }
+        return mean/dataToUse.size();
+    }
+
+    /*
+    This method creates the tree. The rtLearner is used to insert to the tree, currentNode is technically
+    previous node created so we can add new created node to currentNode. dataToUse is the current data we
+    selected based on if it's a rightDataToUse or leftDataToUse. isLeftChild determines where newly
+    created node should be placed.
+     */
     void createTree(RandomTreeLearner rtLearner, Node currentNode, ArrayList<Integer> dataToUse, boolean isLeftChild)
     {
         int colSize = data.get(0).length;
         int feature = getRandom(colSize-1); // random feature to be used
-        if(dataToUse.size() == 0)
+        if(dataToUse.size() == 0) // I don't think this should ever happen
         {
             return;
         }
         ArrayList<String[]> randomData = getRandomData(dataToUse);
         String [] randData1 = randomData.get(0);
         String [] randData2 = randomData.get(1);
-        double splitValue = (Double.parseDouble(randData1[feature]) + Double.parseDouble(randData2[feature])) / 2;
-        Node node = new Node(splitValue);
-        if(dataToUse.size() <= leaf_size || randData1.equals(randData2))
+        // Ensure that the size of current data is less than or equal to the leaf size given.
+        if(dataToUse.size() <= leaf_size || Arrays.equals(randData1, randData2))
         {
-            int dataLen = randData1.length - 1;
-            double answer = (Double.parseDouble(randData1[dataLen]) + Double.parseDouble(randData2[dataLen])) / 2;
-            node.setAsLeaf(answer);
+            if(leaf_size > 1 || Arrays.equals(randData1, randData2))
+            {
+                // If greater than 1 then get the average of all the data here
+                double answer = getMeanValue(dataToUse);
+                Node node = new Node(answer);
+                node.setAsLeaf();
+                rtLearner.insert(currentNode, node, isLeftChild);
+                return;
+            }
+            double answer = (Double.parseDouble(randData1[randData1.length-1]));
+            Node node = new Node(answer);
+            node.setAsLeaf();
             rtLearner.insert(currentNode, node, isLeftChild);
             return;
         }
+        double splitValue = (Double.parseDouble(randData1[feature]) + Double.parseDouble(randData2[feature])) / 2;
+        Node node = new Node(splitValue);
         node.setFeature(feature);
         rtLearner.insert(currentNode, node, isLeftChild);
         ArrayList<Integer> leftDataToUse = getNextDataToUse(dataToUse, splitValue, feature, true); // for left
-        if(leftDataToUse.isEmpty()) return;
         createTree(rtLearner, node, leftDataToUse, true);
         ArrayList<Integer> rightDataToUse = getNextDataToUse(dataToUse, splitValue, feature, false); // for right
-        if(rightDataToUse.isEmpty()) return;
         createTree(rtLearner, node, rightDataToUse, false);
-
-        //createTree(rtLearner, rightDataToUse, false);
-        //System.out.println("\nFeature selected: "+feature+"\nRandom col 1: "+randomRow1+"\nRandom col 2: "+randomRow2);
     }
 
     double getResult(String [] queryData, RandomTreeLearner rtLearner)
@@ -164,11 +190,17 @@ public class Agent
     double grade(RandomTreeLearner rtLearner, ArrayList<Integer> queryDataPoints)
     {
         double grade = 0;
+        double sumOfAnswers = 0;
+        double sx = 0; double sy = 0; double sxx = 0; double syy = 0; double sxy = 0;
         for(int x : queryDataPoints)
         {
             String [] queryData = data.get(x);
             double answer = Double.parseDouble(queryData[queryData.length - 1]);
             double predictedAnswer = getResult(queryData, rtLearner);
+            sumOfAnswers += Math.pow((answer - predictedAnswer), 2);
+            sx+= answer; sy+= predictedAnswer; sxx += Math.pow(answer, 2); syy += Math.pow(predictedAnswer, 2);
+            sxy += answer * predictedAnswer;
+
             if(answer == predictedAnswer)
             {
                 grade++;
@@ -177,39 +209,24 @@ public class Agent
                 System.out.println("Answer off by "+Math.abs(answer - predictedAnswer));
             }
         }
-        return grade/queryDataPoints.size();
-    }
-
-    void printTree(Node root)
-    {
-        Queue<Node> nodeQueue = new LinkedList<>();
-        nodeQueue.add(root);
-        while(!nodeQueue.isEmpty())
-        {
-            Node current = nodeQueue.remove();
-            if(current.isLeaf())
-            {
-                System.out.println("Leaf answer "+current.getSplit_value());
-                return;
-            }
-            // if it's not a leaf then it should have a right and left child
-            if(current == root)
-            {
-                System.out.println("Root split value "+current.getSplit_value()+" feature "+current.getFeature());
-            }else
-            {
-                System.out.println("Split value "+current.getSplit_value()+" feature "+current.getFeature());
-            }
-            nodeQueue.add(current.getLeftChild());
-            nodeQueue.add(current.getRightChild());
-        }
+        int dataLen = queryDataPoints.size();
+        double covariation = sxy / dataLen - sx * sy/ dataLen /dataLen;
+        // standard error of x
+        double sigmaX = Math.sqrt(sxx/dataLen - Math.pow(sx, 2) / dataLen/dataLen);
+        double sigmaY = Math.sqrt(syy/dataLen - Math.pow(sy, 2) / dataLen/dataLen);
+        double correlation = covariation/sigmaX/sigmaY;
+        sumOfAnswers /= queryDataPoints.size();
+        System.out.println("Exact grade answer is "+grade/queryDataPoints.size());
+        //System.out.println("Correlation is "+correlation);
+        sumOfAnswers = Math.sqrt(sumOfAnswers);
+        return correlation;
     }
 
     public static void main(String [] args)
     {
         Agent agent = new Agent();
         RandomTreeLearner rtLearner = new RandomTreeLearner();
-        File dataFile = Parser.getDataFile("simple.csv");
+        File dataFile = Parser.getDataFile("Istanbul.csv");
         agent.readInFile(dataFile);
         ArrayList<Integer> initialDataToUse = new ArrayList<>();
         int trainData = agent.data.size() * 60;
@@ -230,16 +247,24 @@ public class Agent
             System.out.println(agent.getResult(queryData, rtLearner));
             queryDataPoints.add(x);
         }
+        System.out.println("Correlation for Out-Of-Sample is "+agent.grade(rtLearner, queryDataPoints));
 
-        System.out.println("Query Data");
+        System.out.println("Out of Sample Query Data");
         agent.printData(queryDataPoints);
-        System.out.println("Actual Data");
-        for(String [] d : agent.data)
-        {
-            System.out.println(Arrays.toString(d));
-        }
 
-        System.out.println("Final grade is "+agent.grade(rtLearner, queryDataPoints));
+        System.out.println("In Sample Query Data");
+        for(int x : initialDataToUse)
+        {
+            String [] inSampleData = agent.data.get(x);
+            System.out.println(agent.getResult(inSampleData, rtLearner));
+        }
+        System.out.println("Correlation for In-Sample data is "+agent.grade(rtLearner, initialDataToUse));
+
+//        System.out.println("Actual Data");
+//        for(String [] d : agent.data)
+//        {
+//            System.out.println(Arrays.toString(d));
+//        }
         //agent.printTree(rtLearner.getRoot());
     }
 }
