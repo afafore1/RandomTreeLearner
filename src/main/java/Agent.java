@@ -1,4 +1,5 @@
 import helper.Parser;
+import net.minidev.json.JSONObject;
 import tree.Node;
 import tree.RandomTreeLearner;
 
@@ -18,6 +19,7 @@ public class Agent
 {
     ArrayList<String[]> data = new ArrayList<>();
     static final int leaf_size = 1;
+    public static JSONObject solution = new JSONObject();
 
 
     void readInFile(File dataFile)
@@ -155,19 +157,19 @@ public class Agent
                 double answer = getMeanValue(dataToUse);
                 Node node = new Node(answer);
                 node.setAsLeaf();
-                rtLearner.insert(currentNode, node, isLeftChild);
+                rtLearner.insert(currentNode, node, isLeftChild, solution);
                 return;
             }
             double answer = (Double.parseDouble(randData1[randData1.length-1]));
             Node node = new Node(answer);
             node.setAsLeaf();
-            rtLearner.insert(currentNode, node, isLeftChild);
+            rtLearner.insert(currentNode, node, isLeftChild, solution);
             return;
         }
         double splitValue = (Double.parseDouble(randData1[feature]) + Double.parseDouble(randData2[feature])) / 2;
         Node node = new Node(splitValue);
         node.setFeature(feature);
-        rtLearner.insert(currentNode, node, isLeftChild);
+        rtLearner.insert(currentNode, node, isLeftChild, solution);
         ArrayList<Integer> leftDataToUse = getNextDataToUse(dataToUse, splitValue, feature, true); // for left
         createTree(rtLearner, node, leftDataToUse, true);
         ArrayList<Integer> rightDataToUse = getNextDataToUse(dataToUse, splitValue, feature, false); // for right
@@ -237,12 +239,11 @@ public class Agent
         }
         agent.createTree(rtLearner, null, initialDataToUse, false);
         System.out.println("Training Data");
-        agent.printData(initialDataToUse);
+        //agent.printData(initialDataToUse);
         System.out.println("Answers");
         ArrayList<Integer> queryDataPoints = new ArrayList<>();
         // get answer
-        for(int x = trainData; x < agent.data.size(); x++)
-        {
+        for(int x = trainData; x < agent.data.size(); x++) {
             String [] queryData = agent.data.get(x);
             System.out.println(agent.getResult(queryData, rtLearner));
             queryDataPoints.add(x);
@@ -259,6 +260,12 @@ public class Agent
             System.out.println(agent.getResult(inSampleData, rtLearner));
         }
         System.out.println("Correlation for In-Sample data is "+agent.grade(rtLearner, initialDataToUse));
+        System.out.println(solution.toString());
+        try {
+            Parser.saveSolution(solution);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 //        System.out.println("Actual Data");
 //        for(String [] d : agent.data)

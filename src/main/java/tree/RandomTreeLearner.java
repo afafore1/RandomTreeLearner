@@ -1,5 +1,13 @@
 package tree;
 
+import helper.Parser;
+import net.minidev.json.JSONArray;
+import net.minidev.json.JSONObject;
+import net.minidev.json.parser.JSONParser;
+
+import java.io.File;
+import java.io.IOException;
+
 /**
  * Created by Ayomitunde on 3/12/2017.
  */
@@ -12,28 +20,37 @@ public class RandomTreeLearner
         return this.root;
     }
 
-    public void insert(Node currentNode, Node node, boolean isLeftChild)
-    {
-        if(currentNode == null)
-        {
+    public void insert(Node currentNode, Node node, boolean isLeftChild, JSONObject solution) {
+        if(currentNode == null) {
             root = node;
             System.out.println("Root has "+node.getSplit_value()+" with feature "+node.getFeature());
             return;
         }
-        if(isLeftChild)
-        {
+
+        JSONObject obj;
+        if (solution.get(String.valueOf(currentNode.getSplit_value())) == null) {
+            obj = new JSONObject();
+            solution.put(String.valueOf(currentNode.getSplit_value()), obj);
+        } else {
+            obj = (JSONObject) solution.get(String.valueOf(currentNode.getSplit_value()));
+        }
+        obj.put("feature", currentNode.getFeature());
+        solution.put(String.valueOf(currentNode.getSplit_value()), obj);
+        if(isLeftChild) {
             currentNode.setLeftChild(node);
             System.out.println("Left Child of "+currentNode.getSplit_value()+" "+" has "+node.getSplit_value()+" with feature "+node.getFeature());
-        }else
-        {
+            obj.put("leftChild", String.valueOf(node.getSplit_value()));
+        } else {
             currentNode.setRightChild(node);
             System.out.println("Right Child of "+currentNode.getSplit_value()+" "+" has "+node.getSplit_value()+" with feature "+node.getFeature());
+            obj.put("rightChild", String.valueOf(node.getSplit_value()));
         }
-        if(node.isLeaf())
-        {
+        if(node.isLeaf()) {
             System.out.println("Leaf has answer "+node.getSplit_value());
+            obj.put("leaf", String.valueOf(node.getSplit_value()));
         }
         node.setParent(currentNode);
+
 //        if(value >= node.getValue())
 //        {
 //            if(node.getRightChild() == null)
